@@ -21,6 +21,9 @@ loadrt tp
 # hostmot2 driver
 loadrt hostmot2
 
+# CoreXY driver
+loadrt CoreXY
+
 # load low-level driver
 newinst [HOSTMOT2](DRIVER) [HOSTMOT2]DEVNAME -- config=[HOSTMOT2](CONFIG)  debug=1
 
@@ -63,6 +66,10 @@ loadrt or2 names=or2.e0-fan-act,or2.ve-jog-enable
 loadrt abs names=abs.nozzle-vel
 loadrt reset names=reset.extruder-en1,reset.extruder-en2
 
+# ################################################
+# THREADS
+# ################################################
+
 #addf   hm2_[HOSTMOT2](BOARD).0.capture-position                 servo-thread
 addf   hm2_[HOSTMOT2](BOARD).0.read         servo-thread
 addf   gantry.z.read                        servo-thread
@@ -71,7 +78,7 @@ addf   motion-command-handler               servo-thread
 #addf   mux-gen.00                           servo-thread
 #addf   and2.probe                           servo-thread
 addf   motion-controller                    servo-thread
-# HBP
+# Heated bed
 addf   lowpass.hbp-temp                     servo-thread
 addf   pid.hbp-temp.do-pid-calcs            servo-thread
 addf   sum2.hbp-temp-range-neg              servo-thread
@@ -83,7 +90,7 @@ addf   limit1.hbp-heater                    servo-thread
 addf   and3.hbp-no-error                    servo-thread
 addf   not.hbp-error                        servo-thread
 addf   comp.hbp-active                      servo-thread
-# E0
+# Extruder 0
 addf   scale.e0-fan-comp                    servo-thread
 addf   lowpass.e0-temp                      servo-thread
 addf   pid.e0-temp.do-pid-calcs             servo-thread
@@ -156,7 +163,7 @@ addf mux4.ve                                servo-thread
 
 # Update functions
 addf   gantry.z.write                       servo-thread
-#addf   hm2_[HOSTMOT2](BOARD).0.update                           servo-thread
+#addf   hm2_[HOSTMOT2](BOARD).0.update      servo-thread
 addf   hm2_[HOSTMOT2](BOARD).0.write        servo-thread
 
 
@@ -282,6 +289,23 @@ ready  fdm-e0-pid
 # Axis-of-motion Specific Configs (not the GUI)
 # ######################################################
 
+# ################
+# CoreXY Setup
+# ################
+
+net corexy.X.pos-cmd <= axis.0.motor-pos-cmd
+net corexy.X.pos-cmd => CoreXY.0.axis.0.pos-cmd
+net corexy.Y.pos-cmd <= axis.1.motor-pos-cmd
+net corexy.Y.pos-cmd => CoreXY.0.axis.1.pos-cmd
+
+net corexy.X.pos-fb  <= CoreXY.0.axis.0.pos-fb
+net corexy.X.pos-fb  => axis.0.motor-pos-fb
+net corexy.Z.pos-fb  <= CoreXY.0.axis.1.pos-fb
+net corexy.Z.pos-fb  => axis.1.motor-pos-fb
+
+# TODO figure out what these gain values do and fix them
+setp CoreXY.0.axis.0.gain 0.5
+setp CoreXY.0.axis.1.gain -1.5
 
 # ################
 # X [0] Axis
