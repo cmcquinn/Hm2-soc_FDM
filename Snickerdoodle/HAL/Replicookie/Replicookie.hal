@@ -35,7 +35,7 @@ newinst lgantry gantry.z pincount=2
 
 # Python user-mode HAL module to read ADC value and generate a thermostat output for PWM
 # c = analog input channel and thermistor table
-loadusr -Wn Therm hal_xadc -n Therm -c vaux0:[HBP]THERMISTOR,vaux8:[EXTRUDER_0]THERMISTOR
+loadusr -Wn Therm hal_temp_xadc -n Therm -c vaux0:[HBP]THERMISTOR,vaux8:[EXTRUDER_0]THERMISTOR
 
 
 # other components
