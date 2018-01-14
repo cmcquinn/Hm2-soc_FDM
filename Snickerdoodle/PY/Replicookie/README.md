@@ -1,7 +1,7 @@
-# Prusa_i3-CRAMPS
-Prusa_i3 CRAMPS velocity based extraction configuration for Machinekit
+# Replicookie-CRAMPS
+Replicookie CRAMPS velocity based extraction configuration for Machinekit
 
-3D printer configuration using Machinekits Python API for my Prusa-i3
+3D printer configuration using Machinekits Python API for my Replicookie
 ( Originated from:  https://github.com/strahlex/MendelMax-CRAMPS )
 
     Uses gantry control on Z-axis
@@ -18,4 +18,4 @@ With individual Left/Right Z-axis offset-adjustment in machinekit-client
 
 
 
-![](./images/Prusa-i3_dev.jpg)
+![](./images/Replicookie_dev.jpg)
