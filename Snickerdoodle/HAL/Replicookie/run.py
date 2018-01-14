@@ -23,9 +23,9 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 c = config.Config()
 os.environ["MACHINEKIT_INI"] = c.MACHINEKIT_INI
 
-parser = argparse.ArgumentParser(description='This is the Prusa-i3-soc run script '
+parser = argparse.ArgumentParser(description='This is the Replicookie-soc run script '
                                  'it demonstrates how a run script could look like '
-                                 'and of course starts the Prusa-i3 config')
+                                 'and of course starts the Replicookie config')
 
 parser.add_argument('-v', '--video', help='Starts the video server', action='store_true')
 
@@ -43,10 +43,10 @@ try:
 
     if not check_mklaucher():  # start mklauncher if not running to make things easier
         launcher.start_process('mklauncher .')
-    launcher.start_process("configserver -n Prusa-i3 ~/Machineface ")
+    launcher.start_process("configserver -n Replicookie ~/Machineface ")
     if args.video:
         launcher.start_process('videoserver --ini video.ini Webcam1')
-    launcher.start_process('linuxcnc Prusa-i3.ini')
+    launcher.start_process('linuxcnc Replicookie.ini')
     while True:
         launcher.check_processes()
         time.sleep(1)
