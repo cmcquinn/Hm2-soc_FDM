@@ -1086,8 +1086,8 @@ setp hm2_[HOSTMOT2](BOARD).0.pwmgen.04.enable    1
 net f0.pwm => hm2_[HOSTMOT2](BOARD).0.pwmgen.04.value
 
 # FET 6 - Fan / LED
-setp hm2_[HOSTMOT2](BOARD).0.pwmgen.05.enable    1
-net f1.pwm  => hm2_[HOSTMOT2](BOARD).0.pwmgen.05.value
+# setp hm2_[HOSTMOT2](BOARD).0.pwmgen.05.enable    1
+# net f1.pwm  => hm2_[HOSTMOT2](BOARD).0.pwmgen.05.value
 
 net e0.temp.set     => pid.e0-temp.command
 
@@ -1165,8 +1165,8 @@ net estop-out           <= estopchain.and
 #net estop-out => watchdog.enable-in
 
 # drive estop-sw
-net estop-out => hm2_[HOSTMOT2](BOARD).0.gpio.035.out
-setp hm2_[HOSTMOT2](BOARD).0.gpio.035.invert_output 1
+net estop-out => hm2_[HOSTMOT2](BOARD).0.gpio.026.out
+setp hm2_[HOSTMOT2](BOARD).0.gpio.026.invert_output 1
 
 # ##################################################
 # UI linking
