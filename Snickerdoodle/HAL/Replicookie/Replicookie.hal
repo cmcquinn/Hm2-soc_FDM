@@ -717,7 +717,7 @@ newsig e0.temp.standby           float
 net e0.temp.measr  => lowpass.e0-temp.in
 net e0.temp.meas   <= lowpass.e0-temp.out
 setp lowpass.e0-temp.gain 0.003
-net e0.temp.measr   <= Therm.ch-00.value
+net e0.temp.measr   <= Therm.vaux8.value
 
 # PID
 net emcmot.00.enable  =>   pid.e0-temp.enable
@@ -837,7 +837,7 @@ newsig hbp.temp.standby          float
 net hbp.temp.measr  => lowpass.hbp-temp.in
 net hbp.temp.meas   <= lowpass.hbp-temp.out
 setp lowpass.hbp-temp.gain 0.003
-net hbp.temp.measr   <= Therm.ch-01.value
+net hbp.temp.measr   <= Therm.vaux0.value
 
 # PID
 net emcmot.00.enable => pid.hbp-temp.enable
