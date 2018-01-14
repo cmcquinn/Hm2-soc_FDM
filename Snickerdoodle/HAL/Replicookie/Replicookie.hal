@@ -601,7 +601,7 @@ newsig estop-out bit
 net estop-user <= iocontrol.0.user-enable-out
 
 # Monitor estop input from hardware
-net estop-loop hm2_[HOSTMOT2](BOARD).0.gpio.034.in_not => iocontrol.0.emc-enable-in
+net estop-loop hm2_[HOSTMOT2](BOARD).0.gpio.025.in_not => iocontrol.0.emc-enable-in
 
 # create signals for tool loading loopback
 net tool-prep-loop iocontrol.0.tool-prepare => iocontrol.0.tool-prepared
