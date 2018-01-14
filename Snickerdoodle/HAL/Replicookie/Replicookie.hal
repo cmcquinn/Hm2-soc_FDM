@@ -292,11 +292,11 @@ net emcmot.00.enable => hm2_[HOSTMOT2](BOARD).0.stepgen.00.enable
 
 
 # position command and feedback
-net emcmot.00.pos-cmd <= axis.0.motor-pos-cmd
+net emcmot.00.pos-cmd <= CoreXY.0.joint.0.pos-cmd
 net emcmot.00.pos-cmd => hm2_[HOSTMOT2](BOARD).0.stepgen.00.position-cmd
 
 net motor.00.pos-fb <= hm2_[HOSTMOT2](BOARD).0.stepgen.00.position-fb
-net motor.00.pos-fb => axis.0.motor-pos-fb
+net motor.00.pos-fb => CoreXY.0.joint.0.pos-fb
 
 
 # timing parameters
@@ -328,11 +328,11 @@ net emcmot.01.enable => hm2_[HOSTMOT2](BOARD).0.stepgen.01.enable
 
 
 # position command and feedback
-net emcmot.01.pos-cmd <= axis.1.motor-pos-cmd
+net emcmot.01.pos-cmd <= CoreXY.0.joint.1.pos-cmd
 net emcmot.01.pos-cmd => hm2_[HOSTMOT2](BOARD).0.stepgen.01.position-cmd
 
 net motor.01.pos-fb <= hm2_[HOSTMOT2](BOARD).0.stepgen.01.position-fb
-net motor.01.pos-fb => axis.1.motor-pos-fb
+net motor.01.pos-fb => CoreXY.0.joint.1.pos-fb
 
 
 # timing parameters
