@@ -1,12 +1,12 @@
 import qbs
 
 MachinekitApplication {
-    name: "Prusa-i3"
-    halFiles: ["Prusa-i3.hal",
+    name: "Replicookie"
+    halFiles: ["Replicookie.hal",
                "velocity-extruding.hal"]
-    configFiles: ["Prusa-i3.ini"]
+    configFiles: ["Replicookie.ini"]
     otherFiles: ["tool.tbl", "subroutines"]
     compFiles: ["thermistor_check.comp"]
-    linuxcncIni: "Prusa-i3.ini"
-    //display: "thinkpad.local:0.0"
+    linuxcncIni: "Replicookie.ini"
+    //display: "xwing.local:0.0"
 }
