@@ -37,6 +37,7 @@ try:
     launcher.register_exit_handler()  # needs to executed after HAL files
     launcher.install_comp('thermistor_check.comp')
     launcher.install_comp('reset.comp')
+    launcher.install_comp('CoreXY.comp')
     nc_path = os.path.expanduser('~/nc_files')
     if not os.path.exists(nc_path):
         os.mkdir(nc_path)
