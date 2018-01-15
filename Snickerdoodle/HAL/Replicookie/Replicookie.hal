@@ -226,9 +226,11 @@ newpin fdm-ve-jog fdm-ve-jog.distance       float io
 newpin fdm-ve-jog fdm-ve-jog.velocity       float io
 newpin fdm-ve-jog fdm-ve-jog.direction      bit   io
 newpin fdm-ve-jog fdm-ve-jog.trigger        bit   io
-newpin fdm-ve-jog fdm-ve-jog.continous      bit   out
+newpin fdm-ve-jog fdm-ve-jog.continuous      bit   io
 newpin fdm-ve-jog fdm-ve-jog.dtg            float in
 newpin fdm-ve-jog fdm-ve-jog.max-velocity   float in
+newpin fdm-ve-jog fdm-ve-jog.extruder-count u32   in
+newpin fdm-ve-jog fdm-ve-jog.extruder-sel   s32   in
 ready  fdm-ve-jog
 
 newcomp fdm-ve-params timer=100
@@ -487,7 +489,7 @@ setp oneshot.ve-jog.falling 1
 setp oneshot.ve-jog.retriggerable 1
 net ve.jog-active <= oneshot.ve-jog.out
 
-net ve.jog-continous => or2.ve-jog-enable.in0
+net ve.jog-continuous => or2.ve-jog-enable.in0
 net ve.jog-active    => or2.ve-jog-enable.in1
 net ve.jog-enable    <= or2.ve-jog-enable.out
 
@@ -518,7 +520,7 @@ setp reset.extruder-en2.rising 1
 setp reset.extruder-en2.falling 0
 setp reset.extruder-en2.retriggerable 1
 setp reset.extruder-en2.reset-bit 0
-net ve.jog-continous => reset.extruder-en2.trigger
+net ve.jog-continuous => reset.extruder-en2.trigger
 net ve.extruder-en <= reset.extruder-en2.out-bit
 
 # now the solution of Andy Pugh for automatically retracting/priming
@@ -1197,11 +1199,13 @@ net f1.set             <=> fdm-f1.set
 #net l0.b               <=> fdm-l0.b
 #net l0.w               <=> fdm-l0.w
 net ve.jog-trigger     <=> fdm-ve-jog.trigger
-net ve.jog-continous   <=  fdm-ve-jog.continous
+net ve.jog-continuous   <=  fdm-ve-jog.continuous
 net ve.jog-velocity    <=> fdm-ve-jog.velocity
 net ve.jog-distance    <=> fdm-ve-jog.distance
 net ve.jog-direction   <=> fdm-ve-jog.direction
 net ve.jog-dtg          => fdm-ve-jog.dtg
+net ve.jog-extruder-count => fdm-ve-jog.extruder-count
+net ve.jog-extruder-sel => fdm-ve-jog.extruder-sel
 setp fdm-ve-jog.max-velocity [AXIS_3]MAX_VELOCITY
 net ve.filament-dia             <=> fdm-ve-params.filament-dia
 net ve.retract-vel              <=> fdm-ve-params.retract-vel
