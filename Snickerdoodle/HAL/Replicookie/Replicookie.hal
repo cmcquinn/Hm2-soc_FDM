@@ -62,7 +62,7 @@ loadrt div2 names=div2.extrude-rate,div2.retract-time,div2.ve-jog-time
 loadrt mux4 names=mux4.ve
 loadrt oneshot names=oneshot.retract,oneshot.ve-jog
 loadrt ddt names=ddt.extruder-accel
-loadrt or2 names=or2.e0-fan-act,or2.ve-jog-enable
+loadrt or2 names=or2.e0-fan-act,or2.ve-jog-enable,or2.estop-or
 loadrt abs names=abs.nozzle-vel
 loadrt reset names=reset.extruder-en1,reset.extruder-en2
 
@@ -78,6 +78,7 @@ addf   motion-command-handler               servo-thread
 #addf   mux-gen.00                           servo-thread
 #addf   and2.probe                           servo-thread
 addf   motion-controller                    servo-thread
+addf    or2.estop-or                        servo-thread
 # Heated bed
 addf   lowpass.hbp-temp                     servo-thread
 addf   pid.hbp-temp.do-pid-calcs            servo-thread
@@ -603,7 +604,15 @@ newsig estop-out bit
 net estop-user <= iocontrol.0.user-enable-out
 
 # Monitor estop input from hardware
-net estop-loop hm2_[HOSTMOT2](BOARD).0.gpio.025.in_not => iocontrol.0.emc-enable-in
+# Connect the estop through an or, so that hm2 can be tested without any real hardware connected
+# net estop-loop hm2_[HOSTMOT2](BOARD).0.gpio.025.in_not => iocontrol.0.emc-enable-in
+net estop-loop hm2_[HOSTMOT2](BOARD).0.gpio.025.in_not => or2.estop-or.in1
+
+# Override the ESTOP based on the setting in the ini file
+setp or2.estop-or.in0 [HAL](ESTOP_OVERRIDE)
+
+# Connect the result of the ESTOP or to the emc enable pin
+net estop-passthrough or2.estop-or.out iocontrol.0.emc-enable-in
 
 # create signals for tool loading loopback
 net tool-prep-loop iocontrol.0.tool-prepare => iocontrol.0.tool-prepared
