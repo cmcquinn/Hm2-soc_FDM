@@ -79,6 +79,9 @@ addf   motion-command-handler               servo-thread
 #addf   and2.probe                           servo-thread
 addf   motion-controller                    servo-thread
 addf    or2.estop-or                        servo-thread
+# CoreXY
+addf   CoreXY.0.read						servo-thread
+addf   CoreXY.0.write						servo-thread
 # Heated bed
 addf   lowpass.hbp-temp                     servo-thread
 addf   pid.hbp-temp.do-pid-calcs            servo-thread
