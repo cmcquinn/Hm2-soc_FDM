@@ -72,13 +72,14 @@ loadrt reset names=reset.extruder-en1,reset.extruder-en2
 
 #addf   hm2_[HOSTMOT2](BOARD).0.capture-position                 servo-thread
 addf   hm2_[HOSTMOT2](BOARD).0.read         servo-thread
+addf   hm2_[HOSTMOT2](BOARD).0.pet_watchdog servo-thread
 addf   gantry.z.read                        servo-thread
 addf   motion-command-handler               servo-thread
 #addf   f2u.probe-sel                        servo-thread
 #addf   mux-gen.00                           servo-thread
 #addf   and2.probe                           servo-thread
 addf   motion-controller                    servo-thread
-addf    or2.estop-or                        servo-thread
+addf   or2.estop-or                         servo-thread
 # CoreXY
 addf   CoreXY.0.read						servo-thread
 addf   CoreXY.0.write						servo-thread
