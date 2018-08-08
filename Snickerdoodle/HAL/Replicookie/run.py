@@ -10,7 +10,7 @@ import time
 from machinekit import launcher
 from machinekit import config
 
-#launcher.set_debug_level(5)
+launcher.set_debug_level(5)
 
 def check_mklaucher():
     try:
