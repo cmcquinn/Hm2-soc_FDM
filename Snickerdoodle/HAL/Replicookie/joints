@@ -1,0 +1,38 @@
+   109        float OUT             0  CoreXY.0.joint.0.pos-cmd                	0.000010	--l-	      ==> emcmot.00.pos-cmd
+   109        float IN             -0  CoreXY.0.joint.0.pos-fb                 	0.000010	--l-	      <== motor.00.pos-fb
+   109        float OUT             0  CoreXY.0.joint.1.pos-cmd                	0.000010	--l-	      ==> emcmot.01.pos-cmd
+   109        float IN             -0  CoreXY.0.joint.1.pos-fb                 	0.000010	--l-	      <== motor.01.pos-fb
+   477        float OUT             0  axis.0.joint-pos-cmd                    	0.000010	--l-
+   477        float OUT             0  axis.0.joint-pos-fb                     	0.000010	--l-
+   477        float OUT             0  axis.0.joint-vel-cmd                    	0.000010	--l-	      ==> ve.xvel
+   477        float OUT            -0  axis.1.joint-pos-cmd                    	0.000010	--l-
+   477        float OUT            -0  axis.1.joint-pos-fb                     	0.000010	--l-
+   477        float OUT             0  axis.1.joint-vel-cmd                    	0.000010	--l-	      ==> ve.yvel
+   477        float OUT             0  axis.2.joint-pos-cmd                    	0.000010	--l-
+   477        float OUT             0  axis.2.joint-pos-fb                     	0.000010	--l-
+   477        float OUT             0  axis.2.joint-vel-cmd                    	0.000010	--l-	      ==> ve.zvel
+   908    910 bit   IN          FALSE  gantry.z.joint.00.home                  		--l-	      <== limit-z-min
+   908    910 float IN            0.4  gantry.z.joint.00.home-offset           	0.000010	--l-	      <== home-offset-zr
+   908    910 float OUT             0  gantry.z.joint.00.offset                	0.000010	--l-
+   908    910 float OUT             0  gantry.z.joint.00.pos-cmd               	0.000010	--l-	      ==> motor.02.pos-cmd
+   908    910 float IN             -0  gantry.z.joint.00.pos-fb                	0.000010	--l-	      <== motor.02.pos-fb
+   908    910 bit   IN          FALSE  gantry.z.joint.01.home                  		--l-	      <== limit-z-max
+   908    910 float IN            0.4  gantry.z.joint.01.home-offset           	0.000010	--l-	      <== home-offset-zl
+   908    910 float OUT             0  gantry.z.joint.01.offset                	0.000010	--l-
+   908    910 float OUT             0  gantry.z.joint.01.pos-cmd               	0.000010	--l-	      ==> motor.04.pos-cmd
+   908    910 float IN             -0  gantry.z.joint.01.pos-fb                	0.000010	--l-	      <== motor.04.pos-fb
+                                 <== CoreXY.0.joint.0.pos-cmd
+                                 <== CoreXY.0.joint.1.pos-cmd
+                                 ==> gantry.z.joint.01.home-offset
+                                 ==> gantry.z.joint.00.home-offset
+                                 ==> gantry.z.joint.01.home
+                                 ==> gantry.z.joint.00.home
+                                 ==> CoreXY.0.joint.0.pos-fb
+                                 ==> CoreXY.0.joint.1.pos-fb
+                                 <== gantry.z.joint.00.pos-cmd
+                                 ==> gantry.z.joint.00.pos-fb
+                                 <== gantry.z.joint.01.pos-cmd
+                                 ==> gantry.z.joint.01.pos-fb
+                                 <== axis.0.joint-vel-cmd
+                                 <== axis.1.joint-vel-cmd
+                                 <== axis.2.joint-vel-cmd

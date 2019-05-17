@@ -1,0 +1,5 @@
+# Machinekit variable storage
+*.var*
+
+# compiled python files
+*.pyc
