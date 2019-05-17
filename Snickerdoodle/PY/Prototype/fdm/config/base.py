@@ -55,7 +55,7 @@ def usrcomp_watchdog(comps, enableSignal, thread,
 
 
 def setup_stepper(stepgenIndex, section, axisIndex=None,
-                  stepgenType='hm2_5i25.0.stepgen', gantry=False,
+                  stepgenType='hm2_prot.0.stepgen', gantry=False,
                   gantryJoint=0, velocitySignal=None, thread=None):
     stepgen = '%s.%02i' % (stepgenType, stepgenIndex)
     if axisIndex is not None:

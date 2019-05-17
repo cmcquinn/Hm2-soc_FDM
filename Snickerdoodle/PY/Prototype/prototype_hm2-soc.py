@@ -38,41 +38,37 @@ ve.velocity_extrusion(extruders=numExtruders, thread='servo-thread')
 base.setup_stepper(section='AXIS_0', axisIndex=0, stepgenIndex=0)
 # Y [1] Axis
 base.setup_stepper(section='AXIS_1', axisIndex=1, stepgenIndex=1)
-# Z [2] Axis
-base.setup_stepper(section='AXIS_2', axisIndex=2, stepgenIndex=2,
-              thread='servo-thread', gantry=True, gantryJoint=0)
-base.setup_stepper(section='AXIS_2', axisIndex=2, stepgenIndex=3,
-            gantry=True, gantryJoint=1)
+
 # Extruder, velocity controlled
-for i in range(0, numExtruders):
-    base.setup_stepper(section='EXTRUDER_%i' % i, stepgenIndex=4,
-                       velocitySignal='ve-extrude-vel')
+# for i in range(0, numExtruders):
+#     base.setup_stepper(section='EXTRUDER_%i' % i, stepgenIndex=4,
+#                        velocitySignal='ve-extrude-vel')
 
 # Extruder Multiplexer
-base.setup_extruder_multiplexer(extruders=numExtruders, thread='servo-thread')
+# base.setup_extruder_multiplexer(extruders=numExtruders, thread='servo-thread')
 
 # Stepper Multiplexer
-multiplexSections = []
-for i in range(0, numExtruders):
-    multiplexSections.append('EXTRUDER_%i' % i)
-base.setup_stepper_multiplexer(stepgenIndex=4, sections=multiplexSections,
-                               selSignal='extruder-sel', thread='servo-thread')
+# multiplexSections = []
+# for i in range(0, numExtruders):
+#     multiplexSections.append('EXTRUDER_%i' % i)
+# base.setup_stepper_multiplexer(stepgenIndex=4, sections=multiplexSections,
+#                                selSignal='extruder-sel', thread='servo-thread')
 
 # Fans
-for i in range(0, numFans):
-    base.setup_fan('f%i' % i, thread='servo-thread')
-for i in range(0, numExtruders):
-    hardware.setup_exp('exp%i' % i)
+# for i in range(0, numFans):
+#     base.setup_fan('f%i' % i, thread='servo-thread')
+# for i in range(0, numExtruders):
+#     hardware.setup_exp('exp%i' % i)
 
 # Temperature Signals
-base.create_temperature_control(name='hbp', section='HBP',
-                                hardwareOkSignal='temp-hw-ok',
-                                thread='servo-thread')
-for i in range(0, numExtruders):
-    base.create_temperature_control(name='e%i' % i, section='EXTRUDER_%i' % i,
-                                    coolingFan='f%i' % i,
-                                    hardwareOkSignal='temp-hw-ok',hotendFan='exp%i' % i,
-                                    thread='servo-thread')
+# base.create_temperature_control(name='hbp', section='HBP',
+#                                 hardwareOkSignal='temp-hw-ok',
+#                                 thread='servo-thread')
+# for i in range(0, numExtruders):
+#     base.create_temperature_control(name='e%i' % i, section='EXTRUDER_%i' % i,
+#                                     coolingFan='f%i' % i,
+#                                     hardwareOkSignal='temp-hw-ok',hotendFan='exp%i' % i,
+#                                     thread='servo-thread')
 
 # LEDs
 #for i in range(0, numLights):
