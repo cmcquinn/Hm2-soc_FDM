@@ -4,7 +4,7 @@ from machinekit import config as c
 import os
 
 
-def setup_motion(config, kinematics='trivkins'):
+def setup_motion(kinematics='trivkins'):
     rt.loadrt(kinematics)
     rt.loadrt('tp')
     rt.loadrt('hostmot2')
