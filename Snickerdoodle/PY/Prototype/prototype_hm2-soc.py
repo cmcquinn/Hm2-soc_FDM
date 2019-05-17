@@ -9,7 +9,7 @@ from fdm.config import velocity_extrusion as ve
 from fdm.config import base
 from fdm.config import storage
 from fdm.config import motion
-import cramps as hardware
+import prototype as hardware
 
 # initialize the RTAPI command client
 rt.init_RTAPI()
