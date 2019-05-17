@@ -26,7 +26,6 @@ def init_hardware():
         'hal_temp_xadc',
         name='temp',
         filter_size=20,
-        ref='y',
         #                channels='00:%s,01:%s,02:%s,03:%s'
         channels='vaux0:%s,vaux8:%s' %
         (c.find('HBP', 'THERMISTOR', defaultThermistor),
