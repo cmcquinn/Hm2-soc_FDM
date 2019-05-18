@@ -11,7 +11,7 @@ def setup_motion(kinematics='trivkins'):
     # rt.newinst(c.find('HOSTMOT2', 'DRIVER'), # hm2_soc_ol
     #    c.find('HOSTMOT2', 'DEVNAME'), # hm2-socfpga0
     #    c.find('HOSTMOT2', 'CONFIG')) # "firmware=zynq/dtbo/prototype_7z020_ol.dtbo num_pwmgens=2 num_stepgens=2"
-    os.system('halcmd newinst {driver} {instname} -- {config}'.format(
+    os.system('halcmd newinst {driver} {instname} -- config="{config}"'.format(
         driver=c.find('HOSTMOT2', 'DRIVER'),
         instname=c.find('HOSTMOT2', 'DEVNAME'),
         config=c.find('HOSTMOT2', 'CONFIG')
