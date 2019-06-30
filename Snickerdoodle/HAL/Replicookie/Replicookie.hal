@@ -25,7 +25,7 @@ loadrt hostmot2
 loadrt CoreXY
 
 # load low-level driver
-newinst [HOSTMOT2](DRIVER) [HOSTMOT2]DEVNAME -- config=[HOSTMOT2](CONFIG)  debug=1 already_programmed=1
+newinst [HOSTMOT2](DRIVER) [HOSTMOT2]DEVNAME -- config=[HOSTMOT2](CONFIG) debug=1
 
 loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES num_aio=51 num_dio=21 #tp=tp kins=trivkins
 

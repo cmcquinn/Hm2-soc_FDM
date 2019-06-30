@@ -1,29 +1,30 @@
 from machinekit import hal
 from machinekit import rtapi as rt
 from machinekit import config as c
-import os
 
-def setup_motion(kinematics='trivkins'):
+def setup_motion(kinematics='trivkins', tp='tp', num_aio=50, num_dio=21):
     rt.loadrt(kinematics)
-    rt.loadrt('tp')
-    rt.loadrt('hostmot2')
+    rt.loadrt(tp)
 
-    # rt.newinst(c.find('HOSTMOT2', 'DRIVER'), # hm2_soc_ol
-    #    c.find('HOSTMOT2', 'DEVNAME'), # hm2-socfpga0
-    #    c.find('HOSTMOT2', 'CONFIG')) # "firmware=zynq/dtbo/prototype_7z020_ol.dtbo num_pwmgens=2 num_stepgens=2"
-    os.system('halcmd newinst {driver} {instname} -- config="{config}"'.format(
-        driver=c.find('HOSTMOT2', 'DRIVER'),
-        instname=c.find('HOSTMOT2', 'DEVNAME'),
-        config=c.find('HOSTMOT2', 'CONFIG')
-        ))
-    # os.system('halcmd newinst hm2_soc_ol hm2-socfpga0 -- config="firmware=socfpga/dtbo/DE0_Nano_SoC_Cramps.3x24.dtbo num_pwmgens=6 num_stepgens=8 enable_adc=1" debug=1')
+
+    # hostmot2 setup  get names and config from ini file
+    hostmot2 = bool(c.find('HOSTMOT2', 'DRIVER'))
+    if hostmot2:
+        rt.loadrt('hostmot2')
+        rt.newinst(c.find('HOSTMOT2', 'DRIVER'),
+            c.find('HOSTMOT2', 'DEVNAME'),
+            "-- ",
+            c.find('HOSTMOT2', 'CONFIG'))
 
     # motion controller, get name and thread periods from ini file
     rt.loadrt(c.find('EMCMOT', 'EMCMOT'),
         servo_period_nsec=c.find('EMCMOT', 'SERVO_PERIOD'),
         num_joints=c.find('TRAJ', 'AXES'),
-        num_aio=51,
-        num_dio=21)
+        num_aio=num_aio,
+        num_dio=num_dio,
+        tp=tp,
+        kins=kinematics)
+
 
 def setup_temperature_io(name):
     index = 0
