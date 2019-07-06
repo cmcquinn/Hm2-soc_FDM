@@ -46,6 +46,10 @@ def setup_hardware(thread):
     # get number of pwmgens and stepgens from hm2 config string
     config = c.find('HOSTMOT2', 'CONFIG')
     config = config.split()
+    
+    # handle config string starting with 'config='
+    if config[0].find('config=') != -1:
+        config[0] = config[0].strip('config=')
     params = dict(s.split('=') for s in config)
 
     # PWM
