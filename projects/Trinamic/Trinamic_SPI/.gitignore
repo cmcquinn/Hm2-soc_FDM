@@ -1,0 +1,10 @@
+*.user
+*.user.*
+~*
+*~
+.directory
+*.pyc
+*.var
+*.bak
+core
+*.qmlc

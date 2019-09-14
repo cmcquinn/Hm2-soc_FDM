@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>trinamic_spi/Trinamic_SPI.qml</file>
+        <file>trinamic_spi/description.ini</file>
+        <file>trinamic_spi/ApplicationMenuBar.qml</file>
+        <file>trinamic_spi/ApplicationToolBar.qml</file>
+        <file>trinamic_spi/ToggleSettingAction.qml</file>
+        <file>trinamic_spi/Controls/Spacer.qml</file>
+        <file>trinamic_spi/Controls.2/HalSpinBox2.qml</file>
+        <file>trinamic_spi/Controls.2/Switch2.qml</file>
+        <file>trinamic_spi/ManualTab/AxisControls.qml</file>
+        <file>trinamic_spi/ManualTab/KeyboardJogControl.qml</file>
+        <file>trinamic_spi/ManualTab/ManualTab.qml</file>
+        <file>trinamic_spi/StatusBar/ApplicationStatusBar.qml</file>
+        <file>trinamic_spi/StatusBar/MachineStatusLabel.qml</file>
+        <file>trinamic_spi/StatusBar/PositionOffsetLabel.qml</file>
+        <file>trinamic_spi/StatusBar/ToolStatusLabel.qml</file>
+    </qresource>
+</RCC>
